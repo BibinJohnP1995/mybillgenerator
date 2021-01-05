@@ -1,0 +1,207 @@
+{% load static %}
+<html>
+<head>
+  <title>MyBillGenerator/Edit Your Reading</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'layout.css' %}" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+
+
+  <div class="wrapper row0">
+  <div id="topbar" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="fl_left">
+      <ul class="nospace">
+        <li><a href="{% url 'home' %}"><i class="fas fa-home fa-lg"></i></a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+      </ul>
+    </div>
+    <div class="fl_right">
+      <ul class="nospace">
+        <li><i class="fas fa-phone rgtspace-5"></i> +91 0000000000</li>
+        <li><i class="fas fa-envelope rgtspace-5"></i> mybillgenerator@domain.com</li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+
+<div class="wrapper row1" style="background-image: url({% static 'img/00.png' %}); background-size: 300px 100px; background-size: cover; ">
+  <header id="header" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div id="logo" class="one_quarter first">
+      <h1><a href="{% url 'home' %}">MyBillGenerator</a></h1>
+      <p>to generate your electricity bill</p>
+    </div>
+      
+    <!-- ################################################################################################ -->
+  </header>
+</div>
+
+<marquee style="font-size: 30px; font-family: 'serifs'; font-weight: bold; color: white; background-color: black; margin-top: 5px;">VIEW/ EDIT YOUR READING <strong style="font-size: 20px; margin-left: 20px; color: red;">"We will make electricity so cheap that only the rich will burn candles" -Thomas Alva Edison</strong></marquee>
+    
+    <!-- ################################################################################################ -->
+  </header>
+</div>
+
+<center>
+    <div><h1><b>Edit Your Reading</b></h1></div></center>
+
+
+  <div class="wrapper row2">
+  <nav id="mainav" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <ul class="clear">
+       <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'bill_calc' %}">Bill Generation</a></li>
+      <li><a class="drop" href="#">Save Reading</a>
+        <ul>
+
+          <li><a href="{% url 'save_reading' %}">To Save New Reading</a></li>
+          <li><a href="{% url 'show_all_readings' %}">Show Your ALL Readings/Edit</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'profile' %}">Profile</a></li>
+      <li><a href="{% url 'change_pswd' %}">Change Password</a></li>
+      <li><a href="{% url 'add_new_building' %}">Add New Building</a></li>
+      <li><a href="{% url 'history' %}">History</a></li>
+      <li><a href="{% url 'logout' %}">LogOut</a></li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </nav>
+</div>
+   <div align="center" style="color:Red; font-weight:bold;">
+        {% if messages %}
+            {% for msg in messages %}
+                    {{ msg }}
+            {% endfor %}
+        {% endif %}
+        </div>
+<br>
+  <div align="center">
+      <h6 class="heading">Edit Your Reading</h6>
+      <p class="nospace btmspace-15"><b>Edit Reading and Click <blink style="color: blue;">'Update'</blink>, You can't Edit Date..!</b></p>
+
+      <form method="post" action="#" style="text-align: center;">
+        {% csrf_token %}
+        <center>
+      <table style="border: 2px solid; font-weight: bold; font-size: 20px; width:20%">
+
+          <tr>
+            <td>
+              <label for="building_name">Building Name</label>
+            </td>
+            <td>
+              <input type="text" name="building_name" required="" value="{{db.Building_name}}" disabled>
+            </td>
+        </tr>
+          <tr>
+            <td>
+              <label for="building_number">Building Number</label>
+            </td>
+            <td>
+              <input type="text" name="building_number" required="" value="{{db.Building_number}}" disabled>
+            </td>
+          </tr>
+
+
+        <tr>
+            <td>
+              <label for="date">Date</label>
+            </td>
+            <td>
+              <input type="text" name="date" value="{{do.Reading_date}}" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <label><strong class="strong"><sup>*</sup></strong>Reading</label>
+            </td>
+            <td>
+              <input type="number" name="reading" value="{{do.Reading}}" required="" maxlength="6" min="0" max="999999">
+            </td>
+        </tr>
+
+      </table>
+                <button class="btn" type="submit">Update</button>
+            </center>
+          </form>
+      </div>
+          
+
+
+     <br>
+    <marquee style="font-size: 30px; font-family: 'serifs'; font-weight: bold; color: white; background-color: black; margin-top: 5px;"><strong style="font-size: 20px; margin-left: 20px; color: blue;">What is a soul? It's like electricity - we don't really know what it is, but it's a force that can light a room- Ray Charles.</strong></marquee> 
+      <div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">MyBillGenerator</h6>
+      <ul class="nospace btmspace-30 linklist contact">
+        <li><i class="fas fa-map-marker-alt"></i>
+          <address>
+          Street Name &amp; Number, Town, Postcode/Zip
+          </address>
+        </li>
+        <li><i class="fas fa-phone"></i> +91 0000000000</li>
+        <li><i class="far fa-envelope"></i> mybillgenerator@domain.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a class="faicon-dribble" href="#"><i class="fab fa-dribbble"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Add your Comments</h6>
+      <p class="nospace btmspace-15">"When you focus on the Good. The Goods get better"</p>
+     <form method="post" action="{% url 'home' %}">
+          {% csrf_token %}
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input class="btmspace-15" type="text" name="name" placeholder="Name" >
+          <input class="btmspace-15" type="email" name="email" placeholder="Email">
+          <input class="btmspace-15" type="text" name="comment" placeholder="Comment">
+          <button type="submit" value="submit">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">MyBillGenerator</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script>
+    async function showReading(date) {
+        const building = document.querySelector('#building').value;
+
+        const url = `/getReading?date=${ date }&building=${ building }`
+
+        const response = await fetch(url, {
+            method: 'GET'
+        });
+        const result = await response.json();
+
+        document.querySelector('#reading').value = result.reading;
+    }
+</script>
+
+</body>
+</html>

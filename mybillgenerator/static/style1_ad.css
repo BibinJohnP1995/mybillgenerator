@@ -1,0 +1,93 @@
+body{
+  margin: 100px;
+  padding: 0;
+  font-family: sans-serif;
+  background-size: cover;
+}
+.heading{
+margin-top:250px;
+height:0px;
+width:0px;
+font-style: normal;
+font-family: TimesNewRoman;
+color:white;
+}
+.heading h2{
+width:500px;
+text-align: center;
+font-size: 30px;
+}
+.table{
+height:300px;
+overflow:auto;
+margin:0px;
+width:820px;
+}
+.table input[type="checkbox"]{
+border:solid;
+height:20px;
+width:35px;
+}
+.table input[type="text"]{
+border: 1px solid #fff;
+background: transparent;
+height:25px;
+width:700px;
+color:#fff;
+font-size: 15px;
+}
+.authenticate{
+margin:0px;
+margin-top: 0px;
+height:0px;
+width:300px;
+}
+.authenticate input[type="submit"]
+{
+margin-left:0px;
+ border: none;
+  outline: none;
+  height: 40px;
+width:100px;
+  background: #fb2525;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.authenticate input[type="submit"]:hover
+{
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
+.searchbar{
+margin-top:0px;
+margin-left:550px;
+margin-right:0px;
+height:50px;
+width:300px;
+}
+.searchbar input[type="text"]
+{
+border: 1px solid #fff;
+background:gold;
+height:30px;
+width:200px;
+color:black;
+font-size:15px;
+}
+.searchbar input[type="submit"]
+{
+border: 1px white;
+background:gold;
+height:35px;
+width:60px;
+color:#fff;
+font-size: 15px;
+}
+.searchbar input[type="submit"]
+{
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}

@@ -1,0 +1,71 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBillGenerator</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style1_ad.css' %}">
+       <link rel="stylesheet" type="text/css" href="{% static 'style_ad.css' %}">
+    <style>
+        .btn
+            {background-color:  #4CAF50;  color: white;  padding: 12px 20px;  border: none;  border-radius: 4px;  cursor: pointer;  align:center;}
+        .bttn
+            {background-color: #FF0000;  color: white;  padding: 12px 20px;  border: none;  border-radius: 4px;  cursor: pointer;  align:center;}
+
+    </style>
+      
+</head>
+<body style=" background-color:black;">
+	<div style="font-weight: bold;font-size:20px; margin-left:20px;">
+		<br>
+		<a href="{% url 'logout_ad' %}">|||LogOut</a>
+        <a href="{% url 'admin_home' %}">| Home</a>
+        <a href="{% url 'feedbacks' %}">| Feedbacks</a>
+	</div>
+<div class="logo">
+      <h1>MyBillGenerator</a></h1>
+      <p>to generate your electricity bill"</p>
+      <p>"Today’s ignorance will bring a dark tomorrow"</p>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+<div>
+	<center>
+		<h2 style="color:white;font-weight:bold;">MyBillGenerator/ Users List</h2>
+	</center>
+    
+</div>
+    <br><br>
+        <div class="">
+            <center>
+            <table style="width:90%;">
+                <tr style="color:blue;font-size:20px; text-align:left;">
+                    <th>User Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>status</th>
+                    <th style="text-align:center; color:red;">Block</th>
+                    <th style="text-align:center; color:#4CAF50;">Enable</th>
+                </tr>
+                {% for i in dc %}
+                <tr style="color:white;">
+                    <td style="color:white;">{{i.Name}}</td>
+                    <td style="color:white;">{{i.Phone}}</td>
+                    <td style="color:white;">{{i.Address}}</td>
+                    <td style="color:white;">{{i.Email}}</td>
+                    <td style="color:yellow;">
+                        {% if i.User_role != 'user_blocked' %}
+                            Enabled
+                        {% endif %}
+                        {% if i.User_role == 'user_blocked' %}
+                            Blocked
+                        {% endif %}
+                    </td>
+                    <td align="center" style="width:10%;"><button class="bttn" name="block" onclick="location.href='{% url 'user_block' i.id %}'">Block</button></td>
+                    <td align="center" style="width:10%;"><button class="btn" name="Enable" onclick="location.href='{% url 'user_enable' i.id %}'">Enable</button></td>
+                </tr>
+                {% endfor %}
+            </table>
+            </center>
+        </div>
+</body>
+</html>

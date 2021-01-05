@@ -1,0 +1,100 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBillGenerator</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'test-style.css' %}">
+</head>
+<body style=" background: url({% static 'img/03.jpg' %})scroll;  background-size: cover;">
+  <div class="logo">
+      <h1>MyBillGenerator</h1>
+      <p>"to generate your electricity bill"</p>
+      <p>"Today’s ignorance will bring a dark tomorrow"</p>
+  </div>
+    <div class="addNew-bd">
+    <form method="post" action="{% url 'new_user_add_building' %}" align="center">
+        {% csrf_token %}
+          <h3 class="heading">ADD BUILDING</h3>
+         <div align="center" style="color:Red; font-weight:bold;">
+        {% if messages %}
+            {% for msg in messages %}
+                    {{ msg }}
+            {% endfor %}
+        {% endif %}
+        </div><br>
+        <br>
+                <!--<input type="number" name="Phone" placeholder="Phone Number" required=""
+                    pattern="" min=0 minlength="10"
+                    maxlength="10" title="Phone number with 7-9 and remaing 9 digit with 0-9">-->
+                <input type="number" id="building_no" name="building_no" placeholder="BUILDING NUMBER" required="" min="0" max="999999" maxlength="5">
+                <input type="text" id="building_name" name="building_name" placeholder="BUILDING NAME" required=""><br>
+                <select name="state" required="">
+                  <option value="" selected="selected" disabled="disabled">STATE</option>
+                  <option value="kerala">Kerala </option>
+                  </option></select>
+              &nbsp;&nbsp;  <select name="district" required="">
+                  <option value="" selected="selected" disabled="disabled">DISTRICT</option>
+                  <option value="tvm">Thiruvananthapuram</option>
+                  <option value="Kollam">Kollam</option>
+                  <option value="Pathanamthitta">Pathanamthitta</option>
+                  <option value=" Alappuzha">Alappuzha</option>
+                  <option value="Kottayam">Kottayam</option>
+                  <option value="Ernakulam">Ernakulam</option>
+                  <option value="Idukki">Idukki</option>
+                  <option value="Thrissur">Thrissur</option>
+                  <option value="Palakkad">Palakkad</option>
+                  <option value="Malappuram">Malappuram</option>
+                  <option value="Kozhikode">Kozhikode</option>
+                  <option value="Wayanad">Wayanad</option>
+                  <option value="Kannur">Kannur</option>
+                  <option value="Kasargode">Kasargode</option>
+                  </option></select>
+             
+               <br><br>
+              <input type="text" id="place" name="place" placeholder="Place" required="">
+             
+            
+                <input type="number" id="pin" name="pin" placeholder="Pin code" required="" maxlength="6" min="600000" max="999999" maxlength="6">
+                <br><br>
+              
+                <label><sup style="color: white; font-size: 15px; ">NB:You can select your electricity purpose</sup></label>
+
+            	<br><br> <br><br><br>
+            	<select name="purpose" required="">
+                  <option value="" selected="selected" disabled="disabled">PURPOSE</option>
+                  <option value="Domestic">Domestic</option>
+                  <option value="Manufacturing_Units">Manufacturing Units</option>
+                  <option value="KWA_Pump_House">KWA Pump House</option>
+                  <option value="IT_Enabled_Services">IT Enabled Services</option>
+                  <option value="Pumping/Dewatering">Pumping/Dewatering</option>
+                  <option value="Livestock_Farm">Livestock Farm</option>
+                  <option value="Educational_Institutions">Educational Institutions</option>
+                  <option value="Libraries_and_Reading_rooms">Libraries and Reading rooms</option>
+                  <option value="KWA_Offices">KWA Offices</option>
+                  <option value="Railways">Railways</option>
+                  <option value="Orphanages">Orphanages</option>
+                  <option value="Gymnasium">Gymnasium</option>
+                  <option value="Sports_and_Arts_Club">Sports and Arts Club</option>
+                  <option value="Swimming_club">Swimming club</option>
+                   <option value="Offices_of_Political_Parties">Offices of Political Parties</option>
+                    <option value="Construction">Construction</option>
+                     <option value="Private_Hospitals">Private Hospitals</option>
+                      <option value="Commercial">Commercial</option>
+                      <option value="Shops">Shops</option>
+                      <option value="Cinema_Theatres">Cinema Theatres</option>
+                      <option value="Circus">Circus</option>
+                      <option value="Others">Others</option>
+                 		</option></select>
+
+                 <br><br><br><br>
+                <select name="phase" required="">
+                  <option value="" selected="selected" disabled="disabled">PHASE</option>
+                  <option value="single">Single Phase</option>
+                  <option value="three">Three Phase</option>
+                </select>
+                    <br><br><br> <br>
+            	 <input type="submit" value="SAVE">
+        </form> 
+        </div> 
+</body>
+</html>

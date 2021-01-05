@@ -1,0 +1,99 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBillGenerator</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'test.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <style>
+      	.container i {
+    margin-left: -30px;
+    cursor: pointer;
+	}
+    </style>
+</head>
+<body  style=" background: url({% static 'img/03.jpg' %})scroll;  background-size: cover;">
+  <div class="logo">
+      <h1>MyBillGenerator</h1>
+      <p>"to generate your electricity bill"</p>
+      <p>"Today’s ignorance will bring a dark tomorrow"</p>
+    </div>
+  <div align="center" style="color:Red; font-weight:bold;">
+        {% if messages %}
+            {% for msg in messages %}
+                    {{ msg }}
+            {% endfor %}
+        {% endif %}
+        </div>
+  <div class="New-User">
+    <h4>NEW ADMIN REGISTRATION</h4>
+    <form method="post" action="{% url 'admin_reg' %}">
+        {% csrf_token %}
+        <input type="text" name="Name" placeholder="Name" required="">
+        <input type="text" name="Address" placeholder="Address" required="">
+        <input type="number" name="Phone" placeholder="Phone Number" required="" title="Phone number with 7-9 and remaing 9 digit with 0-9">
+        <input type="email" name="Email" placeholder="Email" required="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+         <br>
+        <label><blink style=" font-weight: bold;color: blue;">PASSWORD:</blink> "Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"</label>
+        <br>
+        <br>
+        <input type="password" id="password0" name="password0" placeholder="New Password" required=""pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
+        <input type="password" id="password1" name="password1" placeholder="Confirm Password" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
+        <table>
+            <tr>
+                 <td>
+                    <input type="checkbox" onclick="myFunction()" style="height: 20px; width: 20px; margin-top: 20px;" >
+                 </td>
+                <td>
+                    <label style="color:white;">Show Password</label>
+                 </td>
+            </tr>
+        </table>
+        <input type="submit" name="NewUser-Reg" value="Register">
+    </form>
+        <script>
+        var password = document.getElementById("password0"),confirm_password = document.getElementById("password1");
+        function validatePassword(){
+          if(password.value != confirm_password.value) {
+              confirm_password.setCustomValidity("Passwords Don't Match");
+         } else {
+              confirm_password.setCustomValidity('');
+          }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+
+        </script>
+
+  </div>
+
+   <script>
+          function myFunction() {
+            var y = document.getElementById("password0");
+            var z = document.getElementById("password1");
+            if (y.type === "password" && z.type=== "password") {
+              y.type = "text";
+              z.type = "text";
+            } else {
+              y.type = "password";
+              z.type = "password";
+            }
+          }
+   </script>
+
+  <script src="js/abc.js"></script>
+  <script>
+function openForm() {
+  alert("OTP sed to your Mobile Numer")
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+</body>
+</html>

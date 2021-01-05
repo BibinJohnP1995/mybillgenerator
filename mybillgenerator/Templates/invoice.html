@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>invoice</title>
+</head>
+<body>
+<div align="center" style="color:Blue;font-size:25px;"><h1>MyBillGenerator</h1></div>
+<div align="right"><h1>Date:&nbsp;&nbsp;{{date}}</h1></div>
+<div>
+    <div align="left"><h1>Name:&nbsp;&nbsp;{{name}}</h1></div>
+    <div align="left"><h1>Phone:&nbsp;&nbsp;{{phone}}</h1></div>
+    <div align="left"><h1>Building Name:&nbsp;&nbsp;{{b_name}}</h1></div>
+    <div align="left"><h1>Building Number:&nbsp;&nbsp;{{b_no}}</h1></div>
+    <table style="font-size:15px; font-weight:bold;">
+        <tr>
+            <td>From Date:&nbsp;&nbsp;{{f_date}}</td>
+            <td>Reading:&nbsp;&nbsp;{{f_reading}}</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>To Date:&nbsp;&nbsp;{{t_date}}</td>
+            <td>Reading:&nbsp;&nbsp;{{t_reading}}</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td></td>
+            <td>Difference:&nbsp;&nbsp;{{difference}}</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td></td>
+            <td>Amount:&nbsp;&nbsp;{{amount}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

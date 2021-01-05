@@ -1,0 +1,277 @@
+{% load static %}
+<html>
+<head>
+  <title>MyBillGenerator/Edit Building</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'layout.css' %}" rel="stylesheet" type="text/css" media="all">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" type="text/css" href="">
+<style>
+</style>
+</head>
+<body>
+
+
+  <div class="wrapper row0">
+  <div id="topbar" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="fl_left">
+      <ul class="nospace">
+        <li><a href="{% url 'home' %}"><i class="fas fa-home fa-lg"></i></a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+      </ul>
+    </div>
+    <div class="fl_right">
+      <ul class="nospace">
+        <li><i class="fas fa-phone rgtspace-5"></i> +91 0000000000</li>
+        <li><i class="fas fa-envelope rgtspace-5"></i> mybillgenerator@domain.com</li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+
+
+<div class="wrapper row1" style="background-image: url({% static 'img/00.png' %}); background-size: 300px 100px; background-size: cover; ">
+  <header id="header" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div id="logo" class="one_quarter first">
+      <h1><a href="{% url 'home' %}">MyBillGenerator</a></h1>
+      <p>to generate your electricity bill</p>
+    </div>
+      
+    <!-- ################################################################################################ -->
+  </header>
+</div>
+
+<marquee style="font-size: 30px; font-family: 'serifs'; font-weight: bold; color: white; background-color: black; margin-top: 5px;">EDIT BUILDING <strong style="font-size: 20px; margin-left: 20px; color: red;">"We will make electricity so cheap that only the rich will burn candles" -Thomas Alva Edison</strong></marquee>
+    <!-- ################################################################################################ -->
+  </header>
+</div>
+
+<center>
+    <div><h1><b>Edit Building</b></h1></div></center>
+
+
+  <div class="wrapper row2">
+  <nav id="mainav" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+   <ul class="clear">
+         <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'bill_calc' %}">Bill Generation</a></li>
+      <li><a class="drop" href="#">Save Reading</a>
+        <ul>
+
+          <li><a href="{% url 'save_reading' %}">To Save New Reading</a></li>
+          <li><a href="{% url 'show_all_readings' %}">Show Your ALL Readings/Edit</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'profile' %}">Profile</a></li>
+      <li><a href="{% url 'change_pswd' %}">Change Password</a></li>
+      <li><a href="{% url 'add_new_building' %}">Add New Building</a></li>
+      <li><a href="{% url 'history' %}">History</a></li>
+      <li><a href="{% url 'logout' %}">LogOut</a></li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </nav>
+</div>
+   <div align="center" style="color:Red; font-weight:bold;">
+        {% if messages %}
+            {% for msg in messages %}
+                    {{ msg }}
+            {% endfor %}
+        {% endif %}
+        </div>
+<br>
+
+        <div align="center">
+            <h6 class="heading">Edit Building</h6>
+            <p class="nospace btmspace-15"><b>if you want any guide, move mouse over HELP..?</b></p>
+        </div>
+  <div>
+       <form method="post" action="#" style="text-align: center;">
+          {% csrf_token %}
+            <center>
+            <table style="border: 2px solid; font-weight: bold; font-size: 20px; width:80%;">
+                <tr>
+                    <td>
+                        <label for="building_no"><strong class="strong"><sup>*</sup></strong>Building Number</label>
+                    </td>
+                    <td colspan="">
+                        <input type="number" name="building_no"  required value="{{dc.Building_number}}" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="building_name"><strong class="strong"><sup>*</sup></strong>Building Name</label>
+                    </td>
+                    <td colspan="">
+                        <input type="text" name="building_name" required="" value="{{dc.Building_name}}" pattern="[a-zA-Z]{1,30}">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="">
+                        <strong class="strong"><sup>*</sup></strong>State
+                    </td>
+                    <td>
+                        <select name="state" required="">
+                                <option value="" selected="selected" disabled="disabled">STATE</option>
+                                <option value="kerala">KERALA</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="">
+                        <strong class="strong"><sup>*</sup></strong>District
+                    </td>
+                    <td>
+                            <select name="district" required="">
+                                  <option value="" selected="selected" disabled="disabled">DISTRICT</option>
+                                  <option value="tvm">Thiruvananthapuram</option>
+                                  <option value="Kollam">Kollam</option>
+                                  <option value="Pathanamthitta">Pathanamthitta</option>
+                                  <option value=" Alappuzha">Alappuzha</option>
+                                  <option value="Kottayam">Kottayam</option>
+                                  <option value="Ernakulam">Ernakulam</option>
+                                  <option value="Idukki">Idukki</option>
+                                  <option value="Thrissur">Thrissur</option>
+                                  <option value="Palakkad">Palakkad</option>
+                                  <option value="Malappuram">Malappuram</option>
+                                  <option value="Kozhikode">Kozhikode</option>
+                                  <option value="Wayanad">Wayanad</option>
+                                  <option value="Kannur">Kannur</option>
+                                  <option value="Kasargode">Kasargode</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="place"><strong class="strong"><sup>*</sup></strong>Place</label>
+                    </td>
+                    <td colspan="">
+                        <input type="text" name="place" required="" value="{{dc.Place}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pin"><strong class="strong"><sup>*</sup></strong>Pin Code</label>
+                    </td>
+                    <td colspan="">
+                        <input type="number" value="{{dc.Pin_code}}" name="pin" maxlength="6" min="600000" max="999999" minlength="6">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phase"><strong class="strong"><sup>*</sup></strong>PHASE</label>
+                    </td>
+                    <td colspan="">
+                            <select name="phase" required="">
+                                  <option value="" selected="selected" disabled="disabled">PHASE</option>
+                                  <option value="single">Single Phase</option>
+                                  <option value="three">Three Phase</option>
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="purpose"><strong class="strong"><sup>*</sup></strong>Purpose</label>
+                    </td>
+                    <td colspan="">
+                            <select name="purpose" required="">
+                                          <option value="" selected="selected" disabled="disabled">PURPOSE</option>
+                                          <option value="Domestic">Domestic</option>
+                                          <option value="Manufacturing_Units">Manufacturing Units</option>
+                                          <option value="KWA_Pump_House">KWA Pump House</option>
+                                          <option value="IT_Enabled_Services">IT Enabled Services</option>
+                                          <option value="Pumping/Dewatering">Pumping/Dewatering</option>
+                                          <option value="Livestock_Farm">Livestock Farm</option>
+                                      <option value="Educational_Institutions">Educational Institutions</option>
+                                      <option value="Libraries_and_Reading_rooms">Libraries and Reading rooms</option>
+                                      <option value="KWA_Offices">KWA Offices</option>
+                                      <option value="Railways">Railways</option>
+                                      <option value="Orphanages">Orphanages</option>
+                                      <option value="Gymnasium">Gymnasium</option>
+                                      <option value="Sports_and_Arts_Club">Sports and Arts Club</option>
+                                      <option value="Swimming_club">Swimming club</option>
+                                <option value="Offices_of_Political_Parties">Offices of Political Parties</option>
+                                <option value="Construction">Construction</option>
+                                <option value="Private_Hospitals">Private Hospitals</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Shops">Shops</option>
+                                <option value="Cinema_Theatres">Cinema Theatres</option>
+                                <option value="Circus">Circus</option>
+                                <option value="Others">Others</option>
+                            </select>
+                    </td>
+                </tr>
+
+            </table>
+            </center>
+            <div align="center">
+                <button class="btn" type="submit" value="submit">Update</button>
+            </div>
+       </form>
+  </div>
+
+     <br>
+    <marquee style="font-size: 30px; font-family: 'serifs'; font-weight: bold; color: white; background-color: black; margin-top: 5px;"><strong style="font-size: 20px; margin-left: 20px; color: blue;">What is a soul? It's like electricity - we don't really know what it is, but it's a force that can light a room- Ray Charles.</strong></marquee> 
+      <div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">MyBillGenerator</h6>
+      <ul class="nospace btmspace-30 linklist contact">
+        <li><i class="fas fa-map-marker-alt"></i>
+          <address>
+          Street Name &amp; Number, Town, Postcode/Zip
+          </address>
+        </li>
+        <li><i class="fas fa-phone"></i> +91 0000000000</li>
+        <li><i class="far fa-envelope"></i> mybillgenerator@domain.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a class="faicon-dribble" href="#"><i class="fab fa-dribbble"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Add your Comments</h6>
+      <p class="nospace btmspace-15">"When you focus on the Good. The Goods get better"</p>
+      <form method="post" action="{% url 'home' %}">
+          {% csrf_token %}
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input class="btmspace-15" type="text" name="name" placeholder="Name" >
+          <input class="btmspace-15" type="email" name="email" placeholder="Email">
+          <input class="btmspace-15" type="text" name="comment" placeholder="Comment">
+          <button type="submit" value="submit">Submit</button>
+        </fieldset>
+      </form>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2020 - All Rights Reserved - <a href="#">MyBillGenerator</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+
+    
+    
+
+
+</body>
+</html>
