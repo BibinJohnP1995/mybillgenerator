@@ -7,7 +7,6 @@ from django.contrib.auth.models import User, auth
 from django.db.models import Q
 from django.http import HttpResponse
 from django.contrib.auth.hashers import make_password
-
 from django.http import HttpResponse
 from django.views.generic import View
 from django.template.loader import get_template
@@ -73,8 +72,120 @@ def bill_calc(request):
 		if not t_reading:
 			messages.success(request, 'reading empty on the selected TO DATE')
 			return render(request, 'bill_calc.html', {'dc': dc})
-		difference =t_reading - f_reading
-		amount = (difference)*10
+
+		phase_value_single = .12
+		phase_value_three = .14
+
+		a = ['Domestic']
+		b = ['Manufacturing_Units', 'KWA_Pump_House']
+		c = ['IT_Enabled_Services']
+		d = ['Pumping/Dewatering']
+		e = ['Livestock_Farm']
+		f = ['Educational_Institutions', 'Libraries_and_Reading_rooms']
+		g = ['KWA_Offices']
+		h = ['Railways']
+		i = ['Orphanages']
+		j = ['Gymnasium', 'Sports_and_Arts_Club', 'Swimming_club', 'Offices_of_Political_Parties']
+		k = ['Construction']
+		l = ['Private_Hospitals']
+		m = ['Commercial']
+		n = ['Shops']
+		o = ['Cinema_Theatres', 'Circus']
+
+		if db.Phase == 'single':
+			if db.Purpose in a:
+				difference = t_reading - f_reading
+				amount = (difference) * 5 *phase_value_single
+			if db.Purpose in b:
+				difference = t_reading - f_reading
+				amount = (difference) * 6 * phase_value_single
+			if db.Purpose in c:
+				difference = t_reading - f_reading
+				amount = (difference) * 7 * phase_value_single
+			if db.Purpose in d:
+				difference = t_reading - f_reading
+				amount = (difference) * 8 * phase_value_single
+			if db.Purpose in e:
+				difference = t_reading - f_reading
+				amount = (difference) * 9 * phase_value_single
+			if db.Purpose in f:
+				difference = t_reading - f_reading
+				amount = (difference) * 10 * phase_value_single
+			if db.Purpose in g:
+				difference = t_reading - f_reading
+				amount = (difference) * 11 * phase_value_single
+			if db.Purpose in h:
+				difference = t_reading - f_reading
+				amount = (difference) * 12 * phase_value_single
+			if db.Purpose in i:
+				difference = t_reading - f_reading
+				amount = (difference) * 13 * phase_value_single
+			if db.Purpose in j:
+				difference = t_reading - f_reading
+				amount = (difference) * 14 * phase_value_single
+			if db.Purpose in k:
+				difference = t_reading - f_reading
+				amount = (difference) * 15 * phase_value_single
+			if db.Purpose in l:
+				difference = t_reading - f_reading
+				amount = (difference) * 16 * phase_value_single
+			if db.Purpose in m:
+				difference = t_reading - f_reading
+				amount = (difference) * 17 * phase_value_single
+			if db.Purpose in n:
+				difference = t_reading - f_reading
+				amount = (difference) * 18 * phase_value_single
+			if db.Purpose in o:
+				difference = t_reading - f_reading
+				amount = (difference) * 19 * phase_value_single
+
+		if db.Phase == 'three':
+			if db.Purpose in a:
+				difference = t_reading - f_reading
+				amount = (difference) * 10 * phase_value_three
+			if db.Purpose in b:
+				difference = t_reading - f_reading
+				amount = (difference) * 11 * phase_value_three
+			if db.Purpose in c:
+				difference = t_reading - f_reading
+				amount = (difference) * 12 * phase_value_three
+			if db.Purpose in d:
+				difference = t_reading - f_reading
+				amount = (difference) * 13 * phase_value_three
+			if db.Purpose in e:
+				difference = t_reading - f_reading
+				amount = (difference) * 14 * phase_value_three
+			if db.Purpose in f:
+				difference = t_reading - f_reading
+				amount = (difference) * 15 * phase_value_three
+			if db.Purpose in g:
+				difference = t_reading - f_reading
+				amount = (difference) * 16 * phase_value_three
+			if db.Purpose in h:
+				difference = t_reading - f_reading
+				amount = (difference) * 17 * phase_value_three
+			if db.Purpose in i:
+				difference = t_reading - f_reading
+				amount = (difference) * 18 * phase_value_three
+			if db.Purpose in j:
+				difference = t_reading - f_reading
+				amount = (difference) * 19 * phase_value_three
+			if db.Purpose in k:
+				difference = t_reading - f_reading
+				amount = (difference) * 20 * phase_value_three
+			if db.Purpose in l:
+				difference = t_reading - f_reading
+				amount = (difference) * 21 * phase_value_three
+			if db.Purpose in m:
+				difference = t_reading - f_reading
+				amount = (difference) * 22 * phase_value_three
+			if db.Purpose in n:
+				difference = t_reading - f_reading
+				amount = (difference) * 23 * phase_value_three
+			if db.Purpose in o:
+				difference = t_reading - f_reading
+				amount = (difference) * 24 * phase_value_three
+
 
 		dk = Registration.objects.get(id = request.session['log'])
 		name = dk.Name
@@ -134,10 +245,122 @@ def spot_bill(request):
 		difference = 0
 		db = Buildings.objects.get(buil_reg=request.session['log'], Building_number=b_no)
 		b_name = db.Building_name
-		dd = Readings.objects.filter(r_reg=db.id)
+		#dd = Readings.objects.filter(r_reg=db.id)
 
-		difference = int(t_reading) - int(f_reading)
-		amount = (difference) * 10
+		phase_value_single = .12
+		phase_value_three = .14
+
+		a = ['Domestic']
+		b = ['Manufacturing_Units', 'KWA_Pump_House']
+		c = ['IT_Enabled_Services']
+		d = ['Pumping/Dewatering']
+		e = ['Livestock_Farm']
+		f = ['Educational_Institutions', 'Libraries_and_Reading_rooms']
+		g = ['KWA_Offices']
+		h = ['Railways']
+		i = ['Orphanages']
+		j = ['Gymnasium', 'Sports_and_Arts_Club', 'Swimming_club', 'Offices_of_Political_Parties']
+		k = ['Construction']
+		l = ['Private_Hospitals']
+		m = ['Commercial']
+		n = ['Shops']
+		o = ['Cinema_Theatres', 'Circus']
+
+		if db.Phase == 'single':
+			if db.Purpose in a:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 5 * phase_value_single
+			if db.Purpose in b:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 6 * phase_value_single
+			if db.Purpose in c:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 7 * phase_value_single
+			if db.Purpose in d:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 8 * phase_value_single
+			if db.Purpose in e:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 9 * phase_value_single
+			if db.Purpose in f:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 10 * phase_value_single
+			if db.Purpose in g:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 11 * phase_value_single
+			if db.Purpose in h:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 12 * phase_value_single
+			if db.Purpose in i:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 13 * phase_value_single
+			if db.Purpose in j:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 14 * phase_value_single
+			if db.Purpose in k:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 15 * phase_value_single
+			if db.Purpose in l:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 16 * phase_value_single
+			if db.Purpose in m:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 17 * phase_value_single
+			if db.Purpose in n:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 18 * phase_value_single
+			if db.Purpose in o:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 19 * phase_value_single
+
+		if db.Phase == 'three':
+			if db.Purpose in a:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 10 * phase_value_three
+			if db.Purpose in b:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 11 * phase_value_three
+			if db.Purpose in c:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 12 * phase_value_three
+			if db.Purpose in d:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 13 * phase_value_three
+			if db.Purpose in e:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 14 * phase_value_three
+			if db.Purpose in f:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 15 * phase_value_three
+			if db.Purpose in g:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 16 * phase_value_three
+			if db.Purpose in h:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 17 * phase_value_three
+			if db.Purpose in i:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 18 * phase_value_three
+			if db.Purpose in j:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 19 * phase_value_three
+			if db.Purpose in k:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 20 * phase_value_three
+			if db.Purpose in l:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 21 * phase_value_three
+			if db.Purpose in m:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 22 * phase_value_three
+			if db.Purpose in n:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 23 * phase_value_three
+			if db.Purpose in o:
+				difference = int(t_reading) - int(f_reading)
+				amount = (difference) * 24 * phase_value_three
+
+
 
 		dk = Registration.objects.get(id=request.session['log'])
 		name = dk.Name
